@@ -76,6 +76,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tapOnCurrentLocation:" destination="bNu-uJ-O8x" eventType="touchUpInside" id="ucN-l3-9WM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

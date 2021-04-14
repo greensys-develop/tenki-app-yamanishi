@@ -18,6 +18,7 @@
 		A10FF05D26242852007D014A /* wether_app_yamanishiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FF05C26242852007D014A /* wether_app_yamanishiUITests.swift */; };
 		A11B6ACC2624420C008F1F81 /* PrefectureWeather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11B6ACB2624420C008F1F81 /* PrefectureWeather.storyboard */; };
 		A11B6AD926244607008F1F81 /* PrefectureWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6AD826244607008F1F81 /* PrefectureWeatherTableViewController.swift */; };
+		A17E65402626A1480082B4C9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17E653F2626A1480082B4C9 /* CoreLocation.framework */; };
 		A1889CC32625326B00190D5C /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1889CC22625326B00190D5C /* Prefecture.swift */; };
 		A1889CC8262549C800190D5C /* WeatherDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1889CC7262549C800190D5C /* WeatherDetail.storyboard */; };
 		A1889CCD26254BE700190D5C /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1889CCC26254BE700190D5C /* WeatherDetailViewController.swift */; };
@@ -67,6 +68,7 @@
 		A10FF05E26242852007D014A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A11B6ACB2624420C008F1F81 /* PrefectureWeather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrefectureWeather.storyboard; sourceTree = "<group>"; };
 		A11B6AD826244607008F1F81 /* PrefectureWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureWeatherTableViewController.swift; sourceTree = "<group>"; };
+		A17E653F2626A1480082B4C9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A1889CC22625326B00190D5C /* Prefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefecture.swift; sourceTree = "<group>"; };
 		A1889CC7262549C800190D5C /* WeatherDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherDetail.storyboard; sourceTree = "<group>"; };
 		A1889CCC26254BE700190D5C /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17E65402626A1480082B4C9 /* CoreLocation.framework in Frameworks */,
 				2A5A85463881E9D77005B8F9 /* Pods_wether_app_yamanishi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +203,7 @@
 		FE6591204DA12F626845358A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A17E653F2626A1480082B4C9 /* CoreLocation.framework */,
 				51254547B1BF7609667C71B7 /* Pods_wether_app_yamanishi.framework */,
 				615A4DD1B6D3F520D8F0D0DC /* Pods_wether_app_yamanishi_wether_app_yamanishiUITests.framework */,
 				D80279E557E784964509C889 /* Pods_wether_app_yamanishiTests.framework */,

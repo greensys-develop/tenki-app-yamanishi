@@ -19,7 +19,11 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(nextView, animated: true)
     }
     
-
+    @IBAction func tapOnCurrentLocation(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "WeatherDetail", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "WeatherDetail") as! WeatherDetailViewController
+        self.present(nextView, animated: true, completion: nil)
+    }
 
 }
 
