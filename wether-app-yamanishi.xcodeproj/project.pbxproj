@@ -1,0 +1,796 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A5A85463881E9D77005B8F9 /* Pods_wether_app_yamanishi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51254547B1BF7609667C71B7 /* Pods_wether_app_yamanishi.framework */; };
+		A10FF03B26242852007D014A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FF03A26242852007D014A /* AppDelegate.swift */; };
+		A10FF03D26242852007D014A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FF03C26242852007D014A /* SceneDelegate.swift */; };
+		A10FF03F26242852007D014A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FF03E26242852007D014A /* ViewController.swift */; };
+		A10FF04226242852007D014A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A10FF04026242852007D014A /* Main.storyboard */; };
+		A10FF04426242852007D014A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10FF04326242852007D014A /* Assets.xcassets */; };
+		A10FF04726242852007D014A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A10FF04526242852007D014A /* LaunchScreen.storyboard */; };
+		A10FF05226242852007D014A /* wether_app_yamanishiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FF05126242852007D014A /* wether_app_yamanishiTests.swift */; };
+		A10FF05D26242852007D014A /* wether_app_yamanishiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FF05C26242852007D014A /* wether_app_yamanishiUITests.swift */; };
+		A11B6ACC2624420C008F1F81 /* PrefectureWeather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11B6ACB2624420C008F1F81 /* PrefectureWeather.storyboard */; };
+		A11B6AD926244607008F1F81 /* PrefectureWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6AD826244607008F1F81 /* PrefectureWeatherTableViewController.swift */; };
+		A1889CC32625326B00190D5C /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1889CC22625326B00190D5C /* Prefecture.swift */; };
+		A1889CC8262549C800190D5C /* WeatherDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1889CC7262549C800190D5C /* WeatherDetail.storyboard */; };
+		A1889CCD26254BE700190D5C /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1889CCC26254BE700190D5C /* WeatherDetailViewController.swift */; };
+		B5E48FF655B24BBCAA818CEB /* Pods_wether_app_yamanishi_wether_app_yamanishiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615A4DD1B6D3F520D8F0D0DC /* Pods_wether_app_yamanishi_wether_app_yamanishiUITests.framework */; };
+		C50682CD4ACBDAD6B6085A3B /* Pods_wether_app_yamanishiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80279E557E784964509C889 /* Pods_wether_app_yamanishiTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A10FF04E26242852007D014A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10FF02F26242852007D014A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A10FF03626242852007D014A;
+			remoteInfo = "wether-app-yamanishi";
+		};
+		A10FF05926242852007D014A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10FF02F26242852007D014A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A10FF03626242852007D014A;
+			remoteInfo = "wether-app-yamanishi";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D96E5703CA9C9141CEF208B /* Pods-wether-app-yamanishi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wether-app-yamanishi.release.xcconfig"; path = "Target Support Files/Pods-wether-app-yamanishi/Pods-wether-app-yamanishi.release.xcconfig"; sourceTree = "<group>"; };
+		2FBC7F5B562FDB0447394026 /* Pods-wether-app-yamanishi-wether-app-yamanishiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wether-app-yamanishi-wether-app-yamanishiUITests.release.xcconfig"; path = "Target Support Files/Pods-wether-app-yamanishi-wether-app-yamanishiUITests/Pods-wether-app-yamanishi-wether-app-yamanishiUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3A37BEB15950A1D2C91E02FB /* Pods-wether-app-yamanishiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wether-app-yamanishiTests.debug.xcconfig"; path = "Target Support Files/Pods-wether-app-yamanishiTests/Pods-wether-app-yamanishiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		51254547B1BF7609667C71B7 /* Pods_wether_app_yamanishi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wether_app_yamanishi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		615A4DD1B6D3F520D8F0D0DC /* Pods_wether_app_yamanishi_wether_app_yamanishiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wether_app_yamanishi_wether_app_yamanishiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5A488B4B7FF72300BFF7E1 /* Pods-wether-app-yamanishiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wether-app-yamanishiTests.release.xcconfig"; path = "Target Support Files/Pods-wether-app-yamanishiTests/Pods-wether-app-yamanishiTests.release.xcconfig"; sourceTree = "<group>"; };
+		8B9B5F52D0C75D9024BE6684 /* Pods-wether-app-yamanishi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wether-app-yamanishi.debug.xcconfig"; path = "Target Support Files/Pods-wether-app-yamanishi/Pods-wether-app-yamanishi.debug.xcconfig"; sourceTree = "<group>"; };
+		8F39575B5E65847C84737415 /* Pods-wether-app-yamanishi-wether-app-yamanishiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wether-app-yamanishi-wether-app-yamanishiUITests.debug.xcconfig"; path = "Target Support Files/Pods-wether-app-yamanishi-wether-app-yamanishiUITests/Pods-wether-app-yamanishi-wether-app-yamanishiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A10FF03726242852007D014A /* wether-app-yamanishi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wether-app-yamanishi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10FF03A26242852007D014A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A10FF03C26242852007D014A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A10FF03E26242852007D014A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A10FF04126242852007D014A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A10FF04326242852007D014A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10FF04626242852007D014A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A10FF04826242852007D014A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A10FF04D26242852007D014A /* wether-app-yamanishiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "wether-app-yamanishiTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10FF05126242852007D014A /* wether_app_yamanishiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wether_app_yamanishiTests.swift; sourceTree = "<group>"; };
+		A10FF05326242852007D014A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A10FF05826242852007D014A /* wether-app-yamanishiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "wether-app-yamanishiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10FF05C26242852007D014A /* wether_app_yamanishiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wether_app_yamanishiUITests.swift; sourceTree = "<group>"; };
+		A10FF05E26242852007D014A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A11B6ACB2624420C008F1F81 /* PrefectureWeather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrefectureWeather.storyboard; sourceTree = "<group>"; };
+		A11B6AD826244607008F1F81 /* PrefectureWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureWeatherTableViewController.swift; sourceTree = "<group>"; };
+		A1889CC22625326B00190D5C /* Prefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefecture.swift; sourceTree = "<group>"; };
+		A1889CC7262549C800190D5C /* WeatherDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherDetail.storyboard; sourceTree = "<group>"; };
+		A1889CCC26254BE700190D5C /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
+		D80279E557E784964509C889 /* Pods_wether_app_yamanishiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wether_app_yamanishiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A10FF03426242852007D014A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A5A85463881E9D77005B8F9 /* Pods_wether_app_yamanishi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A10FF04A26242852007D014A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C50682CD4ACBDAD6B6085A3B /* Pods_wether_app_yamanishiTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A10FF05526242852007D014A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5E48FF655B24BBCAA818CEB /* Pods_wether_app_yamanishi_wether_app_yamanishiUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A10FF02E26242852007D014A = {
+			isa = PBXGroup;
+			children = (
+				A10FF03926242852007D014A /* wether-app-yamanishi */,
+				A10FF05026242852007D014A /* wether-app-yamanishiTests */,
+				A10FF05B26242852007D014A /* wether-app-yamanishiUITests */,
+				A10FF03826242852007D014A /* Products */,
+				FAF8A68423901CD572C5F43D /* Pods */,
+				FE6591204DA12F626845358A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A10FF03826242852007D014A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A10FF03726242852007D014A /* wether-app-yamanishi.app */,
+				A10FF04D26242852007D014A /* wether-app-yamanishiTests.xctest */,
+				A10FF05826242852007D014A /* wether-app-yamanishiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A10FF03926242852007D014A /* wether-app-yamanishi */ = {
+			isa = PBXGroup;
+			children = (
+				A17E653B26256F660082B4C9 /* Util */,
+				A17E653A26256F420082B4C9 /* StoryBoard */,
+				A17E653926256F290082B4C9 /* ViewController */,
+				A10FF03A26242852007D014A /* AppDelegate.swift */,
+				A10FF03C26242852007D014A /* SceneDelegate.swift */,
+				A10FF04326242852007D014A /* Assets.xcassets */,
+				A10FF04526242852007D014A /* LaunchScreen.storyboard */,
+				A10FF04826242852007D014A /* Info.plist */,
+			);
+			path = "wether-app-yamanishi";
+			sourceTree = "<group>";
+		};
+		A10FF05026242852007D014A /* wether-app-yamanishiTests */ = {
+			isa = PBXGroup;
+			children = (
+				A10FF05126242852007D014A /* wether_app_yamanishiTests.swift */,
+				A10FF05326242852007D014A /* Info.plist */,
+			);
+			path = "wether-app-yamanishiTests";
+			sourceTree = "<group>";
+		};
+		A10FF05B26242852007D014A /* wether-app-yamanishiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A10FF05C26242852007D014A /* wether_app_yamanishiUITests.swift */,
+				A10FF05E26242852007D014A /* Info.plist */,
+			);
+			path = "wether-app-yamanishiUITests";
+			sourceTree = "<group>";
+		};
+		A17E653926256F290082B4C9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A1889CCC26254BE700190D5C /* WeatherDetailViewController.swift */,
+				A10FF03E26242852007D014A /* ViewController.swift */,
+				A11B6AD826244607008F1F81 /* PrefectureWeatherTableViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A17E653A26256F420082B4C9 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				A1889CC7262549C800190D5C /* WeatherDetail.storyboard */,
+				A11B6ACB2624420C008F1F81 /* PrefectureWeather.storyboard */,
+				A10FF04026242852007D014A /* Main.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		A17E653B26256F660082B4C9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A1889CC22625326B00190D5C /* Prefecture.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		FAF8A68423901CD572C5F43D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B9B5F52D0C75D9024BE6684 /* Pods-wether-app-yamanishi.debug.xcconfig */,
+				0D96E5703CA9C9141CEF208B /* Pods-wether-app-yamanishi.release.xcconfig */,
+				8F39575B5E65847C84737415 /* Pods-wether-app-yamanishi-wether-app-yamanishiUITests.debug.xcconfig */,
+				2FBC7F5B562FDB0447394026 /* Pods-wether-app-yamanishi-wether-app-yamanishiUITests.release.xcconfig */,
+				3A37BEB15950A1D2C91E02FB /* Pods-wether-app-yamanishiTests.debug.xcconfig */,
+				6A5A488B4B7FF72300BFF7E1 /* Pods-wether-app-yamanishiTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FE6591204DA12F626845358A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51254547B1BF7609667C71B7 /* Pods_wether_app_yamanishi.framework */,
+				615A4DD1B6D3F520D8F0D0DC /* Pods_wether_app_yamanishi_wether_app_yamanishiUITests.framework */,
+				D80279E557E784964509C889 /* Pods_wether_app_yamanishiTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10FF03626242852007D014A /* wether-app-yamanishi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10FF06126242852007D014A /* Build configuration list for PBXNativeTarget "wether-app-yamanishi" */;
+			buildPhases = (
+				4B7ABB86A332D501B12B29AF /* [CP] Check Pods Manifest.lock */,
+				A10FF03326242852007D014A /* Sources */,
+				A10FF03426242852007D014A /* Frameworks */,
+				A10FF03526242852007D014A /* Resources */,
+				0871AC6C40ABD1884468CF9A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "wether-app-yamanishi";
+			productName = "wether-app-yamanishi";
+			productReference = A10FF03726242852007D014A /* wether-app-yamanishi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A10FF04C26242852007D014A /* wether-app-yamanishiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10FF06426242852007D014A /* Build configuration list for PBXNativeTarget "wether-app-yamanishiTests" */;
+			buildPhases = (
+				E38AFB628B72C20BC535460F /* [CP] Check Pods Manifest.lock */,
+				A10FF04926242852007D014A /* Sources */,
+				A10FF04A26242852007D014A /* Frameworks */,
+				A10FF04B26242852007D014A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A10FF04F26242852007D014A /* PBXTargetDependency */,
+			);
+			name = "wether-app-yamanishiTests";
+			productName = "wether-app-yamanishiTests";
+			productReference = A10FF04D26242852007D014A /* wether-app-yamanishiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A10FF05726242852007D014A /* wether-app-yamanishiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10FF06726242852007D014A /* Build configuration list for PBXNativeTarget "wether-app-yamanishiUITests" */;
+			buildPhases = (
+				3C5980B4AC3413EA2347FB95 /* [CP] Check Pods Manifest.lock */,
+				A10FF05426242852007D014A /* Sources */,
+				A10FF05526242852007D014A /* Frameworks */,
+				A10FF05626242852007D014A /* Resources */,
+				F4C24DF36146D45622A009BE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A10FF05A26242852007D014A /* PBXTargetDependency */,
+			);
+			name = "wether-app-yamanishiUITests";
+			productName = "wether-app-yamanishiUITests";
+			productReference = A10FF05826242852007D014A /* wether-app-yamanishiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A10FF02F26242852007D014A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					A10FF03626242852007D014A = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					A10FF04C26242852007D014A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = A10FF03626242852007D014A;
+					};
+					A10FF05726242852007D014A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = A10FF03626242852007D014A;
+					};
+				};
+			};
+			buildConfigurationList = A10FF03226242852007D014A /* Build configuration list for PBXProject "wether-app-yamanishi" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A10FF02E26242852007D014A;
+			productRefGroup = A10FF03826242852007D014A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A10FF03626242852007D014A /* wether-app-yamanishi */,
+				A10FF04C26242852007D014A /* wether-app-yamanishiTests */,
+				A10FF05726242852007D014A /* wether-app-yamanishiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A10FF03526242852007D014A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1889CC8262549C800190D5C /* WeatherDetail.storyboard in Resources */,
+				A11B6ACC2624420C008F1F81 /* PrefectureWeather.storyboard in Resources */,
+				A10FF04726242852007D014A /* LaunchScreen.storyboard in Resources */,
+				A10FF04426242852007D014A /* Assets.xcassets in Resources */,
+				A10FF04226242852007D014A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A10FF04B26242852007D014A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A10FF05626242852007D014A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0871AC6C40ABD1884468CF9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wether-app-yamanishi/Pods-wether-app-yamanishi-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wether-app-yamanishi/Pods-wether-app-yamanishi-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wether-app-yamanishi/Pods-wether-app-yamanishi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C5980B4AC3413EA2347FB95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wether-app-yamanishi-wether-app-yamanishiUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B7ABB86A332D501B12B29AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wether-app-yamanishi-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E38AFB628B72C20BC535460F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wether-app-yamanishiTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4C24DF36146D45622A009BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wether-app-yamanishi-wether-app-yamanishiUITests/Pods-wether-app-yamanishi-wether-app-yamanishiUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wether-app-yamanishi-wether-app-yamanishiUITests/Pods-wether-app-yamanishi-wether-app-yamanishiUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wether-app-yamanishi-wether-app-yamanishiUITests/Pods-wether-app-yamanishi-wether-app-yamanishiUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A10FF03326242852007D014A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1889CCD26254BE700190D5C /* WeatherDetailViewController.swift in Sources */,
+				A10FF03F26242852007D014A /* ViewController.swift in Sources */,
+				A11B6AD926244607008F1F81 /* PrefectureWeatherTableViewController.swift in Sources */,
+				A1889CC32625326B00190D5C /* Prefecture.swift in Sources */,
+				A10FF03B26242852007D014A /* AppDelegate.swift in Sources */,
+				A10FF03D26242852007D014A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A10FF04926242852007D014A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10FF05226242852007D014A /* wether_app_yamanishiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A10FF05426242852007D014A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10FF05D26242852007D014A /* wether_app_yamanishiUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A10FF04F26242852007D014A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A10FF03626242852007D014A /* wether-app-yamanishi */;
+			targetProxy = A10FF04E26242852007D014A /* PBXContainerItemProxy */;
+		};
+		A10FF05A26242852007D014A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A10FF03626242852007D014A /* wether-app-yamanishi */;
+			targetProxy = A10FF05926242852007D014A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A10FF04026242852007D014A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A10FF04126242852007D014A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A10FF04526242852007D014A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A10FF04626242852007D014A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A10FF05F26242852007D014A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A10FF06026242852007D014A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A10FF06226242852007D014A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B9B5F52D0C75D9024BE6684 /* Pods-wether-app-yamanishi.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6SF284JKX;
+				INFOPLIST_FILE = "wether-app-yamanishi/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "greensys.wether-app-yamanishi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A10FF06326242852007D014A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D96E5703CA9C9141CEF208B /* Pods-wether-app-yamanishi.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6SF284JKX;
+				INFOPLIST_FILE = "wether-app-yamanishi/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "greensys.wether-app-yamanishi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A10FF06526242852007D014A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A37BEB15950A1D2C91E02FB /* Pods-wether-app-yamanishiTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6SF284JKX;
+				INFOPLIST_FILE = "wether-app-yamanishiTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "greensys.wether-app-yamanishiTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wether-app-yamanishi.app/wether-app-yamanishi";
+			};
+			name = Debug;
+		};
+		A10FF06626242852007D014A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A5A488B4B7FF72300BFF7E1 /* Pods-wether-app-yamanishiTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6SF284JKX;
+				INFOPLIST_FILE = "wether-app-yamanishiTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "greensys.wether-app-yamanishiTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wether-app-yamanishi.app/wether-app-yamanishi";
+			};
+			name = Release;
+		};
+		A10FF06826242852007D014A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F39575B5E65847C84737415 /* Pods-wether-app-yamanishi-wether-app-yamanishiUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6SF284JKX;
+				INFOPLIST_FILE = "wether-app-yamanishiUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "greensys.wether-app-yamanishiUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "wether-app-yamanishi";
+			};
+			name = Debug;
+		};
+		A10FF06926242852007D014A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FBC7F5B562FDB0447394026 /* Pods-wether-app-yamanishi-wether-app-yamanishiUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6SF284JKX;
+				INFOPLIST_FILE = "wether-app-yamanishiUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "greensys.wether-app-yamanishiUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "wether-app-yamanishi";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A10FF03226242852007D014A /* Build configuration list for PBXProject "wether-app-yamanishi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10FF05F26242852007D014A /* Debug */,
+				A10FF06026242852007D014A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A10FF06126242852007D014A /* Build configuration list for PBXNativeTarget "wether-app-yamanishi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10FF06226242852007D014A /* Debug */,
+				A10FF06326242852007D014A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A10FF06426242852007D014A /* Build configuration list for PBXNativeTarget "wether-app-yamanishiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10FF06526242852007D014A /* Debug */,
+				A10FF06626242852007D014A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A10FF06726242852007D014A /* Build configuration list for PBXNativeTarget "wether-app-yamanishiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10FF06826242852007D014A /* Debug */,
+				A10FF06926242852007D014A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A10FF02F26242852007D014A /* Project object */;
+}
