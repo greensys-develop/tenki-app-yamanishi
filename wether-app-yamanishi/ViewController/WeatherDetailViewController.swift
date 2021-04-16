@@ -58,7 +58,7 @@ class WeatherDetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // 日付取得
+    // 日付取得 
     private func getDate() -> Date {
         f.timeStyle = .none
         f.dateStyle = .short
