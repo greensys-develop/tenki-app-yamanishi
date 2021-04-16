@@ -31,26 +31,15 @@ class WeatherDetailViewController: UIViewController {
         
         if let item = selectedItem {
             ApiClient.getPrefectureWeather(byCity: item.queryName) { response, errorString in
-                self.nameLabel.text = response?.name
-                self.dateLabel.text = self.f.string(from: self.getDate())
-                self.maxTemperatureLabel.text = "最高気温：" + String(round((response?.main.temp_max)!)) + "℃"
-                self.minTemperatureLabel.text = "最低気温：" + String(round((response?.main.temp_min)!)) + "℃"
-                self.humidityLabel.text = "湿度：" + String((response?.main.humidity)!) + "%"
-                self.weatherLabel.text = "天気：" + (response?.weather.first!.description)!
-
-                self.weatherImage.setImageByDefault(with: (response?.weather.first!.icon)!)
+                self.setupView(response: response)
             }
         } else {
             ApiClient.getCurrentLocationWeather(byLocation: coordinate) { (response, errorString) in
-                self.nameLabel.text = response?.name
-                self.dateLabel.text = self.f.string(from: self.getDate())
-                self.maxTemperatureLabel.text = "最高気温：" + String(round((response?.main.temp_max)!)) + "℃"
-                self.minTemperatureLabel.text = "最低気温：" + String(round((response?.main.temp_min)!)) + "℃"
-                self.humidityLabel.text = "湿度：" + String((response?.main.humidity)!) + "%"
-                self.weatherLabel.text = "天気：" + (response?.weather.first!.description)!
-
-                self.weatherImage.setImageByDefault(with: (response?.weather.first!.icon)!)
+                self.setupView(response: response)
             }
+//            ApiClient.getFiveDaysAgoWeather(byLocation: coordinate) { (response, errString) in
+//                print(response!)
+//            }
         }
     }
     
@@ -65,6 +54,17 @@ class WeatherDetailViewController: UIViewController {
         f.locale = Locale(identifier: "ja_JP")
         let now = Date()
         return now
+    }
+    
+    private func setupView(response: WeatherModel?) {
+            self.nameLabel.text = response?.name
+            self.dateLabel.text = self.f.string(from: self.getDate())
+            self.maxTemperatureLabel.text = "最高気温：" + String(round((response?.main.temp_max)! - 273.15)) + "℃"
+            self.minTemperatureLabel.text = "最低気温：" + String(round((response?.main.temp_min)! - 273.15)) + "℃"
+            self.humidityLabel.text = "湿度：" + String((response?.main.humidity)!) + "%"
+            self.weatherLabel.text = "天気：" + (response?.weather.first!.description)!
+
+            self.weatherImage.setImageByDefault(with: (response?.weather.first!.icon)!)
     }
     
 }

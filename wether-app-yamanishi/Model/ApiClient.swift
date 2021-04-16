@@ -15,19 +15,32 @@ class ApiClient {
     
     // 都道府県で取得
     class func getPrefectureWeather(byCity prefecture: String,
-                              completion: @escaping (_ response: weather?, _ errorString: String?) -> Void) {
+                                    completion: @escaping (_ response: WeatherModel?, _ errorString: String?) -> Void) {
         let params: [String: Any] = ["q": prefecture, "lang": "ja", "APPID": appId]
         requestApi(params, completion)
     }
     
     // 現在地で取得
-    class func getCurrentLocationWeather(byLocation coodinate: Coordinate, completion: @escaping (_ response: weather?, _ errorString: String?) -> Void) {
+    class func getCurrentLocationWeather(byLocation coodinate: Coordinate,
+                                         completion: @escaping (_ response: WeatherModel?, _ errorString: String?) -> Void) {
         let params: [String: Any] = ["lat": coodinate.lat, "lon": coodinate.lon, "lang": "ja", "APPID": appId]
         requestApi(params, completion)
     }
     
+//    // 過去５日間の天気を取得
+//    class func getFiveDaysAgoWeather(byLocation coodinate: Coordinate,
+//                                         completion: @escaping (_ response: WeatherModel?, _ errorString: String?) -> Void) {
+//        // 前日のUNIX時間を計算
+//        let day = Date()
+//        let modifiedDate = Calendar.current.date(byAdding: .day, value: -1, to: day)!
+//        let unixtime: Int = Int(modifiedDate.timeIntervalSince1970)
+//
+//        let params: [String: Any] = ["lat": coodinate.lat, "lon": coodinate.lon, "dt": unixtime,"lang": "ja", "APPID": appId]
+//        requestApi(params, completion)
+//    }
+    
     private static func requestApi(_ params: [String: Any],
-                                   _ completion: @escaping (_ response: weather?, _ errorString: String?) -> Void) {
+                                   _ completion: @escaping (_ response: WeatherModel?, _ errorString: String?) -> Void) {
         AF.request(baseUrl,
                    method: .get,
                    parameters: params,
@@ -40,7 +53,7 @@ class ApiClient {
                 }
                 let decoder = JSONDecoder()
                 do {
-                    let feed: weather = try decoder.decode(weather.self, from: data)
+                    let feed: WeatherModel = try decoder.decode(WeatherModel.self, from: data)
                     completion(feed, nil)
                 } catch {
                     print("json decorder error")

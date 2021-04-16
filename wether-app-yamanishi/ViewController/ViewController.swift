@@ -22,13 +22,43 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapOnCurrentLocation(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "WeatherDetail", bundle: nil)
-        let nextView = storyboard.instantiateViewController(withIdentifier: "WeatherDetail") as! WeatherDetailViewController
         guard let coordinate = LocationManager.shared.coordinate else {
+            showAlert()
             return
         }
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "WeatherDetail", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "WeatherDetail") as! WeatherDetailViewController
         nextView.coordinate = (lat: coordinate.latitude, lon: coordinate.longitude)
         self.present(nextView, animated: true, completion: nil)
+    }
+    
+    private func showAlert() {
+        let alert: UIAlertController = UIAlertController(title: "位置情報が取得されていません。", message: "位置情報を取得しますか？", preferredStyle:  UIAlertController.Style.alert)
+        let defaultAction: UIAlertAction = UIAlertAction(title: "はい", style: UIAlertAction.Style.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            // 設定画面に移行
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+              return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl)  {
+              if #available(iOS 10.0, *) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                })
+              }
+              else  {
+                UIApplication.shared.openURL(settingsUrl)
+              }
+            }
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: UIAlertAction.Style.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+        })
+        
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        present(alert, animated: true, completion: nil)
     }
 
 }
