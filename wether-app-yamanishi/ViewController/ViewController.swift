@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        LocationManager.shared.initialize()
     }
     
     @IBAction func tapOnPrefectureButton(_ sender: Any) {
@@ -22,6 +24,10 @@ class ViewController: UIViewController {
     @IBAction func tapOnCurrentLocation(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "WeatherDetail", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "WeatherDetail") as! WeatherDetailViewController
+        guard let coordinate = LocationManager.shared.coordinate else {
+            return
+        }
+        nextView.coordinate = (lat: coordinate.latitude, lon: coordinate.longitude)
         self.present(nextView, animated: true, completion: nil)
     }
 
