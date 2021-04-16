@@ -10,6 +10,7 @@ import Alamofire
 class ApiClient {
     
     static let baseUrl = "https://api.openweathermap.org/data/2.5/weather"
+    static let weeklyUrl = "https://api.openweathermap.org/data/2.5/onecall"
     static let appId = "5dfc577c1d7d94e9e23a00431582f1ac"
     static let headers: HTTPHeaders = ["Content-Type": "application/json"]
     
@@ -27,17 +28,17 @@ class ApiClient {
         requestApi(params, completion)
     }
     
-//    // 過去５日間の天気を取得
-//    class func getFiveDaysAgoWeather(byLocation coodinate: Coordinate,
-//                                         completion: @escaping (_ response: WeatherModel?, _ errorString: String?) -> Void) {
+    // 週間天気を取得
+    class func getWeeklyWeather(byLocation coodinate: Coordinate,
+                                         completion: @escaping (_ response: WeatherModel?, _ errorString: String?) -> Void) {
 //        // 前日のUNIX時間を計算
 //        let day = Date()
 //        let modifiedDate = Calendar.current.date(byAdding: .day, value: -1, to: day)!
 //        let unixtime: Int = Int(modifiedDate.timeIntervalSince1970)
-//
-//        let params: [String: Any] = ["lat": coodinate.lat, "lon": coodinate.lon, "dt": unixtime,"lang": "ja", "APPID": appId]
-//        requestApi(params, completion)
-//    }
+
+        let params: [String: Any] = ["lat": coodinate.lat, "lon": coodinate.lon, "lang": "ja", "APPID": appId]
+        requestApi(params, completion)
+    }
     
     private static func requestApi(_ params: [String: Any],
                                    _ completion: @escaping (_ response: WeatherModel?, _ errorString: String?) -> Void) {

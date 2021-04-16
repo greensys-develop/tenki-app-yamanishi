@@ -35,9 +35,8 @@ class ViewController: UIViewController {
     
     private func showAlert() {
         let alert: UIAlertController = UIAlertController(title: "位置情報が取得されていません。", message: "位置情報を取得しますか？", preferredStyle:  UIAlertController.Style.alert)
-        let defaultAction: UIAlertAction = UIAlertAction(title: "はい", style: UIAlertAction.Style.default, handler:{
-            (action: UIAlertAction!) -> Void in
-            // 設定画面に移行
+        let defaultAction: UIAlertAction = UIAlertAction(title: "はい", style: UIAlertAction.Style.default) {_ in
+        // 設定画面に移行
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
               return
             }
@@ -50,10 +49,8 @@ class ViewController: UIViewController {
                 UIApplication.shared.openURL(settingsUrl)
               }
             }
-        })
-        let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: UIAlertAction.Style.cancel, handler:{
-            (action: UIAlertAction!) -> Void in
-        })
+        }
+        let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: UIAlertAction.Style.cancel, handler: nil)
         
         alert.addAction(cancelAction)
         alert.addAction(defaultAction)
