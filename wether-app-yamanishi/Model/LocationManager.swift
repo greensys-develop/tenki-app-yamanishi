@@ -14,6 +14,8 @@ class LocationManager: NSObject {
     let locationManager = CLLocationManager()
     static let shared = LocationManager()
     var coordinate: CLLocationCoordinate2D?
+    let geocoder = CLGeocoder()
+    var pl = ""
     
     func initialize() {
         // locationManagerのデリゲートを受け取る
@@ -22,8 +24,6 @@ class LocationManager: NSObject {
         locationManager.requestWhenInUseAuthorization()
         // ユーザーの位置情報を1度リクエストする
         locationManager.requestLocation()
-        
-//        print("LocationManager: [lat: \(coordinate?.latitude), lon: \(coordinate?.longitude)]")
     }
     
 }
@@ -35,7 +35,15 @@ extension LocationManager: CLLocationManagerDelegate {
         if let location = locations.last {
             // 経度と緯度を取得
             coordinate = location.coordinate
-//            print("LocationManager: [lat: \(coordinate?.latitude), lon: \(coordinate?.longitude)]")
+            
+            //逆ジオコーディング
+            self.geocoder.reverseGeocodeLocation( location, completionHandler: { ( placemarks, error ) in
+                if let placemark = placemarks?.first {
+                    // 位置情報の名称を取得
+                    self.pl = placemark.administrativeArea!
+                }
+            } )
+            
         }
     }
 

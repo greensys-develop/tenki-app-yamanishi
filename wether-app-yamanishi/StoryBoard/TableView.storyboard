@@ -16,17 +16,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="RmS-X8-JEO" kind="relationship" relationship="rootViewController" id="2F8-Wp-fwW"/>
+                        <segue destination="RmS-X8-JEO" kind="relationship" relationship="rootViewController" id="3IR-UI-wux"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91d-Lf-Mvm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1046" y="92"/>
         </scene>
-        <!--Prefecture Weather Table View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="nAT-S7-ttE">
             <objects>
-                <tableViewController storyboardIdentifier="PrefectureWeather" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RmS-X8-JEO" customClass="PrefectureWeatherTableViewController" customModule="wether_app_yamanishi" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RmS-X8-JEO" customClass="TableViewController" customModule="wether_app_yamanishi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dp5-gD-TQ7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,8 +42,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="RmS-X8-JEO" id="pL5-GZ-HvX"/>
-                            <outlet property="delegate" destination="RmS-X8-JEO" id="dgk-t1-8gR"/>
+                            <outlet property="dataSource" destination="RmS-X8-JEO" id="co6-D0-BpP"/>
+                            <outlet property="delegate" destination="RmS-X8-JEO" id="c94-6f-A7G"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="48A-07-cd7"/>

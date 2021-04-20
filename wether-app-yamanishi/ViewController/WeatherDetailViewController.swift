@@ -10,6 +10,7 @@ import UIKit
 class WeatherDetailViewController: UIViewController {
     
     var selectedItem: (name: String, queryName: String)!
+    var weeklySelectedItem: (dt: Int, dateStr: String)?
     var image: UIImage!
     let f = DateFormatter()
     var coordinate: Coordinate = (lat: 0.0, lon: 0.0)
@@ -21,9 +22,14 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var cloudsLabel: UILabel!
+    @IBOutlet weak var uvIndexLabel: UILabel!
+    @IBOutlet weak var rainyPercentLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupView()
     }
     
     override func viewDidLoad() {
@@ -31,16 +37,38 @@ class WeatherDetailViewController: UIViewController {
         
         if let item = selectedItem {
             ApiClient.getPrefectureWeather(byCity: item.queryName) { response, errorString in
-                self.setupView(response: response)
+                self.weatherModelSetupView(response: response)
+            }
+        } else if weeklySelectedItem != nil {
+            self.dateLabel.text = weeklySelectedItem?.dateStr
+            
+            // TableViewから週間天気の日付を選択された時の処理
+            ApiClient.getWeeklyWeather(byLocation: coordinate) { (response, errorString) in
+                self.nameLabel.text = response?.timezone
+                
+                self.onecallSetupView(response: response?.daily?.filter { $0.dt == self.weeklySelectedItem?.dt })
             }
         } else {
             ApiClient.getCurrentLocationWeather(byLocation: coordinate) { (response, errorString) in
-                self.setupView(response: response)
+                self.weatherModelSetupView(response: response)
             }
-//            ApiClient.getFiveDaysAgoWeather(byLocation: coordinate) { (response, errString) in
-//                print(response!)
-//            }
         }
+    }
+    
+    func setupView() {
+        nameLabel.text = ""
+        dateLabel.text = ""
+        maxTemperatureLabel.text = ""
+        minTemperatureLabel.text = ""
+        humidityLabel.text = ""
+        weatherLabel.text = ""
+        cloudsLabel.text = ""
+        uvIndexLabel.text = ""
+        rainyPercentLabel.text = ""
+        
+        cloudsLabel.isHidden = true
+        uvIndexLabel.isHidden = true
+        rainyPercentLabel.isHidden = true
     }
     
     @IBAction func tapOnCancelButton(_ sender: Any) {
@@ -56,7 +84,7 @@ class WeatherDetailViewController: UIViewController {
         return now
     }
     
-    private func setupView(response: WeatherModel?) {
+    private func weatherModelSetupView(response: WeatherModel?) {
             self.nameLabel.text = response?.name
             self.dateLabel.text = self.f.string(from: self.getDate())
             self.maxTemperatureLabel.text = "最高気温：" + String(round((response?.main.temp_max)! - 273.15)) + "℃"
@@ -65,6 +93,21 @@ class WeatherDetailViewController: UIViewController {
             self.weatherLabel.text = "天気：" + (response?.weather.first!.description)!
 
             self.weatherImage.setImageByDefault(with: (response?.weather.first!.icon)!)
+    }
+    
+    private func onecallSetupView(response: [Daily]?) {
+        self.cloudsLabel.isHidden = false
+        self.uvIndexLabel.isHidden = false
+        self.rainyPercentLabel.isHidden = false
+        self.nameLabel.text = LocationManager.shared.pl
+        self.maxTemperatureLabel.text = "最高気温：" + String(round((response?.first?.temp.max)! - 273.15)) + "℃"
+        self.minTemperatureLabel.text = "最低気温：" + String(round((response?.first?.temp.min)! - 273.15)) + "℃"
+        self.humidityLabel.text = "湿度：" + String((response?.first?.humidity)!) + "%"
+        self.cloudsLabel.text = "曇り：" + String(((response?.first!.clouds)!)) + "%"
+        self.uvIndexLabel.text = "UVインデックス値：" + String(((response?.first?.uvi)!)) + "%"
+        self.rainyPercentLabel.text = "降水確率：" + String(((response?.first?.pop)!)) + "%"
+        self.weatherLabel.text = "天気：" + (response?.first?.weather?.first?.description)!
+        self.weatherImage.setImageByDefault(with: (response?.first?.weather?.first!.icon)!)
     }
     
 }
