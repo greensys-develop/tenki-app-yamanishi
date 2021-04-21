@@ -68,6 +68,7 @@ extension Requestable {
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     do {
                         let feed = try decoder.decode(ResponseModel.self, from: data)
+//                        print(feed)
                         completion?(feed)
                     } catch {
                         print("json decorder error")

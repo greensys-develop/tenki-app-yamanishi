@@ -81,28 +81,10 @@ class ViewController: UIViewController {
             let params: [String: Any] = ["lat": coordinate.latitude, "lon": coordinate.longitude, "lang": "ja", "APPID": ApiClient.appId]
             let weeklyWeather = WeeklyWeatherRequest(params: params)
             weeklyWeather.request { (response) in
-                response.daily?.forEach({ (daily) in
-                    nextView.weeklyLists.append((dt: daily.dt, dateStr: self.unixToString(date: TimeInterval(daily.dt))))
-                })
+                nextView.dailyList = response.daily
                 self.navigationController?.pushViewController(nextView, animated: true)
             }
         }
     }
-    
-    func unixToString(date: TimeInterval) -> String {
-        // UNIX時間 "dateUnix" をNSDate型 "date" に変換
-        let dateUnix: TimeInterval = TimeInterval(date)
-        let date = NSDate(timeIntervalSince1970: dateUnix)
-        
-        // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        
-        // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
-        let dateStr: String = formatter.string(from: date as Date)
-        
-        return dateStr
-    }
-    
 }
 

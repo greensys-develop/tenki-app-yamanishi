@@ -10,7 +10,7 @@ import UIKit
 class TableViewController: UITableViewController {
     
     var isWeeklyWeather = false
-    var weeklyLists: [(dt: Int, dateStr: String)] = []
+    var dailyList: [Daily]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isWeeklyWeather {
-             return weeklyLists.count
+            return dailyList!.count
          } else {
              return prefecture.count
          }
@@ -32,7 +32,7 @@ class TableViewController: UITableViewController {
             cell.textLabel!.text = prefecture[indexPath.row].name
         } else {
             // 週間の日付セルを表示
-            cell.textLabel?.text = weeklyLists[indexPath.row].dateStr
+            cell.textLabel?.text = unixToString(date: TimeInterval((dailyList?[indexPath.row].dt)!))
         }
         return cell
     }
@@ -46,9 +46,26 @@ class TableViewController: UITableViewController {
             nextView.selectedItem = prefecture[indexPath.row]
         } else {
             // 週間天気のセルを選択された時の処理
-            nextView.weeklySelectedItem = weeklyLists[indexPath.row]
+            nextView.dailySelectedItem = dailyList?[indexPath.row]
+            nextView.dateStr = unixToString(date: TimeInterval((dailyList?[indexPath.row].dt)!))
+            
         }
         self.present(nextView, animated: true, completion: nil)
+    }
+    
+    func unixToString(date: TimeInterval) -> String {
+        // UNIX時間 "dateUnix" をNSDate型 "date" に変換
+        let dateUnix: TimeInterval = TimeInterval(date)
+        let date = NSDate(timeIntervalSince1970: dateUnix)
+        
+        // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
+        let dateStr: String = formatter.string(from: date as Date)
+        
+        return dateStr
     }
 
 }
