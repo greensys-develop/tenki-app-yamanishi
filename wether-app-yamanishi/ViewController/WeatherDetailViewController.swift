@@ -36,9 +36,13 @@ class WeatherDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if let item = selectedItem {
-            ApiClient.getPrefectureWeather(byCity: item.queryName) { response, errorString in
+            let prefectureWeather = PrefectureWeatherRequest(params: ["q": item.queryName, "lang": "ja", "APPID": ApiClient.appId])
+            prefectureWeather.request { response, errorString in
                 self.weatherModelSetupView(response: response)
             }
+//            ApiClient.getPrefectureWeather(byCity: item.queryName) { response, errorString in
+//                self.weatherModelSetupView(response: response)
+//            }
         } else if weeklySelectedItem != nil {
             self.dateLabel.text = weeklySelectedItem?.dateStr
             
