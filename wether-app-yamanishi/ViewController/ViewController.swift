@@ -10,17 +10,20 @@ import UIKit
 class ViewController: UIViewController {
     
     var coordinate: Coordinate = (lat: 0.0, lon: 0.0)
+    let f = DateFormatter()
+    let now = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // LocationManger
         LocationManager.shared.initialize()
     }
     
     @IBAction func tapOnPrefectureButton(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "TableView", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "TableView") as! TableViewController
-        nextView.flag = 0 // 都道府県のTableViewを表示させるためのフラグ
+        nextView.isWeeklyWeather = false // 都道府県のTableViewを表示させるためのフラグ
         nextView.navigationItem.title = "都道府県の本日の天気"
         self.navigationController?.pushViewController(nextView, animated: true)
     }
@@ -71,18 +74,34 @@ class ViewController: UIViewController {
         
         let storyboard: UIStoryboard = UIStoryboard(name: "TableView", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "TableView") as! TableViewController
-        nextView.flag = 1 // 週間天気ビューを表示させるためのフラグ
+        nextView.isWeeklyWeather = true // 週間天気ビューを表示させるためのフラグ
         nextView.navigationItem.title = "現在地の週間天気"
         
         DispatchQueue.main.async{
-            ApiClient.getWeeklyWeather(byLocation: self.coordinate) { (response, errString) in
-                nextView.tableCountNum = (response?.daily!.count)!
-                response?.daily?.forEach({ (Daily) in
-                    nextView.weeklyLists.append((dt: Daily.dt, dateStr: nextView.unixToString(date: TimeInterval(Daily.dt))))
+            let params: [String: Any] = ["lat": coordinate.latitude, "lon": coordinate.longitude, "lang": "ja", "APPID": ApiClient.appId]
+            let weeklyWeather = WeeklyWeatherRequest(params: params)
+            weeklyWeather.request { (response) in
+                response.daily?.forEach({ (daily) in
+                    nextView.weeklyLists.append((dt: daily.dt, dateStr: self.unixToString(date: TimeInterval(daily.dt))))
                 })
                 self.navigationController?.pushViewController(nextView, animated: true)
             }
         }
+    }
+    
+    func unixToString(date: TimeInterval) -> String {
+        // UNIX時間 "dateUnix" をNSDate型 "date" に変換
+        let dateUnix: TimeInterval = TimeInterval(date)
+        let date = NSDate(timeIntervalSince1970: dateUnix)
+        
+        // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
+        let dateStr: String = formatter.string(from: date as Date)
+        
+        return dateStr
     }
     
 }

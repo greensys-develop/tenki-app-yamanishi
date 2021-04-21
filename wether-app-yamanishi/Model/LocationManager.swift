@@ -15,7 +15,7 @@ class LocationManager: NSObject {
     static let shared = LocationManager()
     var coordinate: CLLocationCoordinate2D?
     let geocoder = CLGeocoder()
-    var pl = ""
+    var placeName = ""
     
     func initialize() {
         // locationManagerのデリゲートを受け取る
@@ -40,7 +40,7 @@ extension LocationManager: CLLocationManagerDelegate {
             self.geocoder.reverseGeocodeLocation( location, completionHandler: { ( placemarks, error ) in
                 if let placemark = placemarks?.first {
                     // 位置情報の名称を取得
-                    self.pl = placemark.administrativeArea!
+                    self.placeName = placemark.administrativeArea!
                 }
             } )
             
