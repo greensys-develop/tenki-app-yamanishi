@@ -27,12 +27,12 @@ class TableViewController: UITableViewController {
     // セルに都道府県を表示
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if !isWeeklyWeather {
-            // 都道府県のセルを表示
-            cell.textLabel!.text = prefecture[indexPath.row].name
-        } else {
+        if isWeeklyWeather {
             // 週間の日付セルを表示
             cell.textLabel?.text = unixToString(date: TimeInterval(dailyList[indexPath.row].dt))
+        } else {
+            // 都道府県のセルを表示
+            cell.textLabel!.text = prefecture[indexPath.row].name
         }
         return cell
     }
@@ -41,13 +41,13 @@ class TableViewController: UITableViewController {
     override func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
         let storyboard: UIStoryboard = UIStoryboard(name: "WeatherDetail", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "WeatherDetail") as! WeatherDetailViewController
-        if !isWeeklyWeather {
-            // 都道府県のセルを選択された時の処理
-            nextView.selectedItem = prefecture[indexPath.row]
-        } else {
+        if isWeeklyWeather {
             // 週間天気のセルを選択された時の処理
             nextView.dailySelectedItem = dailyList[indexPath.row]
             nextView.dateStr = unixToString(date: TimeInterval(dailyList[indexPath.row].dt))
+        } else {
+            // 都道府県のセルを選択された時の処理
+            nextView.selectedItem = prefecture[indexPath.row]
             
         }
         self.present(nextView, animated: true, completion: nil)

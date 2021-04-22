@@ -17,9 +17,7 @@ class WeatherDetailViewController: UIViewController {
     var dailySelectedItem: Daily?
     var dateStr: String?
     
-    var image: UIImage!
     let f = DateFormatter()
-    let now = Date()
     var coordinate: Coordinate = (lat: 0.0, lon: 0.0)
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -99,17 +97,20 @@ class WeatherDetailViewController: UIViewController {
     private func weatherModelSetupView(response: WeatherModel?) {
         guard let weather = response else {
             HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
-            return dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+            return
         }
         
-        self.nameLabel.text = weather.name
-        self.dateLabel.text = self.f.string(from: now)
-        self.maxTemperatureLabel.text = "最高気温：" + String(round(weather.main.tempMax - 273.15)) + "℃"
-        self.minTemperatureLabel.text = "最低気温：" + String(round(weather.main.tempMin - 273.15)) + "℃"
-        self.humidityLabel.text = "湿度：" + String(weather.main.humidity) + "%"
-        self.weatherLabel.text = "天気：" + (weather.weather.first!.description)
-
-        self.weatherImage.setImageByDefault(with: weather.weather.first!.icon)
+        nameLabel.text = weather.name
+        dateLabel.text = f.string(from: Date())
+        maxTemperatureLabel.text = "最高気温：" + String(round(weather.main.tempMax - 273.15)) + "℃"
+        minTemperatureLabel.text = "最低気温：" + String(round(weather.main.tempMin - 273.15)) + "℃"
+        humidityLabel.text = "湿度：" + String(weather.main.humidity) + "%"
+        
+        if let weatherValue = weather.weather.first {
+            weatherLabel.text = "天気：" + (weatherValue.description)
+            weatherImage.setImageByDefault(with: weatherValue.icon)
+        }
     }
     
     private func onecallSetupView(daily: Daily?) {
@@ -124,8 +125,11 @@ class WeatherDetailViewController: UIViewController {
         cloudsLabel.text = "曇り：" + String(((daily?.clouds)!)) + "%"
         uvIndexLabel.text = "UVインデックス値：" + String(Int(round((daily?.uvi)!)))
         rainyPercentLabel.text = "降水確率：" + String(Int(round((daily!.pop * 100)))) + "%"
-        weatherLabel.text = "天気：" + (daily?.weather?.first?.description)!
-        weatherImage.setImageByDefault(with: (daily?.weather?.first!.icon)!)
+        
+        if let weatherValue = daily?.weather?.first {
+            weatherLabel.text = "天気：" + (weatherValue.description)
+            weatherImage.setImageByDefault(with: (weatherValue.icon))
+        }
     }
     
 }

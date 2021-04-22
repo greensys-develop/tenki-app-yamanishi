@@ -10,10 +10,6 @@ import PKHUD
 
 class ViewController: UIViewController {
     
-    var coordinate: Coordinate = (lat: 0.0, lon: 0.0)
-    let f = DateFormatter()
-    let now = Date()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,7 +83,7 @@ class ViewController: UIViewController {
                                     HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
                                     return
                                 }
-                nextView.dailyList = response.daily!
+                nextView.dailyList = daily
                 self.navigationController?.pushViewController(nextView, animated: true)
             }
         }
