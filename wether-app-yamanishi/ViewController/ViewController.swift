@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ViewController: UIViewController {
     
@@ -81,7 +82,12 @@ class ViewController: UIViewController {
             let params: [String: Any] = ["lat": coordinate.latitude, "lon": coordinate.longitude, "lang": "ja", "APPID": ApiClient.appId]
             let weeklyWeather = WeeklyWeatherRequest(params: params)
             weeklyWeather.request { (response) in
-                nextView.dailyList = response.daily
+                guard let daily = response.daily,
+                                    !daily.isEmpty else {
+                                    HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
+                                    return
+                                }
+                nextView.dailyList = response.daily!
                 self.navigationController?.pushViewController(nextView, animated: true)
             }
         }

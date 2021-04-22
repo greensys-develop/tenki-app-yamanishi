@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class WeatherDetailViewController: UIViewController {
     
@@ -91,19 +92,24 @@ class WeatherDetailViewController: UIViewController {
     }
     
     @IBAction func tapOnCancelButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
     private func weatherModelSetupView(response: WeatherModel?) {
-        self.nameLabel.text = response?.name
+        guard let weather = response else {
+            HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
+            return dismiss(animated: true, completion: nil)
+        }
+        
+        self.nameLabel.text = weather.name
         self.dateLabel.text = self.f.string(from: now)
-        self.maxTemperatureLabel.text = "最高気温：" + String(round((response?.main.tempMax)! - 273.15)) + "℃"
-        self.minTemperatureLabel.text = "最低気温：" + String(round((response?.main.tempMin)! - 273.15)) + "℃"
-        self.humidityLabel.text = "湿度：" + String((response?.main.humidity)!) + "%"
-        self.weatherLabel.text = "天気：" + (response?.weather.first!.description)!
+        self.maxTemperatureLabel.text = "最高気温：" + String(round(weather.main.tempMax - 273.15)) + "℃"
+        self.minTemperatureLabel.text = "最低気温：" + String(round(weather.main.tempMin - 273.15)) + "℃"
+        self.humidityLabel.text = "湿度：" + String(weather.main.humidity) + "%"
+        self.weatherLabel.text = "天気：" + (weather.weather.first!.description)
 
-        self.weatherImage.setImageByDefault(with: (response?.weather.first!.icon)!)
+        self.weatherImage.setImageByDefault(with: weather.weather.first!.icon)
     }
     
     private func onecallSetupView(daily: Daily?) {
