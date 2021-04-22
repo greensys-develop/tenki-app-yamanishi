@@ -52,9 +52,9 @@ class WeatherDetailViewController: UIViewController {
             prefectureWeather.request { (response) in
                 self.weatherModelSetupView(response: response)
             }
-        } else if dailySelectedItem != nil {
+        } else if let daily = dailySelectedItem {
             // 現在地の週間天気を表示
-            onecallSetupView(daily: dailySelectedItem)
+            onecallSetupView(daily: daily)
         } else {
             //現在地情報を表示
             let params: [String: Any] = ["lat": coordinate.lat, "lon": coordinate.lon, "lang": "ja", "APPID": ApiClient.appId]
@@ -113,22 +113,22 @@ class WeatherDetailViewController: UIViewController {
         }
     }
     
-    private func onecallSetupView(daily: Daily?) {
+    private func onecallSetupView(daily: Daily) {
         cloudsLabel.isHidden = false
         uvIndexLabel.isHidden = false
         rainyPercentLabel.isHidden = false
         nameLabel.text = LocationManager.shared.placeName
         dateLabel.text = dateStr
-        maxTemperatureLabel.text = "最高気温：" + String(round((daily?.temp.max)! - 273.15)) + "℃"
-        minTemperatureLabel.text = "最低気温：" + String(round((daily?.temp.min)! - 273.15)) + "℃"
-        humidityLabel.text = "湿度：" + String((daily?.humidity)!) + "%"
-        cloudsLabel.text = "曇り：" + String(((daily?.clouds)!)) + "%"
-        uvIndexLabel.text = "UVインデックス値：" + String(Int(round((daily?.uvi)!)))
-        rainyPercentLabel.text = "降水確率：" + String(Int(round((daily!.pop * 100)))) + "%"
+        maxTemperatureLabel.text = "最高気温：" + String(round(daily.temp.max - 273.15)) + "℃"
+        minTemperatureLabel.text = "最低気温：" + String(round(daily.temp.min - 273.15)) + "℃"
+        humidityLabel.text = "湿度：" + String(daily.humidity) + "%"
+        cloudsLabel.text = "曇り：" + String(daily.clouds) + "%"
+        uvIndexLabel.text = "UVインデックス値：" + String(Int(round((daily.uvi))))
+        rainyPercentLabel.text = "降水確率：" + String(Int(round((daily.pop * 100)))) + "%"
         
-        if let weatherValue = daily?.weather?.first {
-            weatherLabel.text = "天気：" + (weatherValue.description)
-            weatherImage.setImageByDefault(with: (weatherValue.icon))
+        if let weatherValue = daily.weather?.first {
+            weatherLabel.text = "天気：" + weatherValue.description
+            weatherImage.setImageByDefault(with: weatherValue.icon)
         }
     }
     
