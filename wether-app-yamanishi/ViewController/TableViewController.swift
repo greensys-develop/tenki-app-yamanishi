@@ -29,7 +29,7 @@ class TableViewController: UITableViewController {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         if isWeeklyWeather {
             // 週間の日付セルを表示
-            cell.textLabel?.text = unixToString(date: TimeInterval(dailyList[indexPath.row].dt))
+            cell.textLabel?.text = Util.unixToString(date: TimeInterval(dailyList[indexPath.row].dt))
         } else {
             // 都道府県のセルを表示
             cell.textLabel!.text = prefecture[indexPath.row].name
@@ -44,28 +44,12 @@ class TableViewController: UITableViewController {
         if isWeeklyWeather {
             // 週間天気のセルを選択された時の処理
             nextView.dailySelectedItem = dailyList[indexPath.row]
-            nextView.dateStr = unixToString(date: TimeInterval(dailyList[indexPath.row].dt))
         } else {
             // 都道府県のセルを選択された時の処理
             nextView.selectedItem = prefecture[indexPath.row]
             
         }
         self.present(nextView, animated: true, completion: nil)
-    }
-    
-    func unixToString(date: TimeInterval) -> String {
-        // UNIX時間 "dateUnix" をNSDate型 "date" に変換
-        let dateUnix: TimeInterval = TimeInterval(date)
-        let date = NSDate(timeIntervalSince1970: dateUnix)
-        
-        // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        
-        // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
-        let dateStr: String = formatter.string(from: date as Date)
-        
-        return dateStr
     }
 
 }

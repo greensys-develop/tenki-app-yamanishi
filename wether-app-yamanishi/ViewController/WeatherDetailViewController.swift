@@ -15,7 +15,6 @@ class WeatherDetailViewController: UIViewController {
     
     // 週間天気
     var dailySelectedItem: Daily?
-    var dateStr: String?
     
     let f = DateFormatter()
     var coordinate: Coordinate = (lat: 0.0, lon: 0.0)
@@ -118,7 +117,7 @@ class WeatherDetailViewController: UIViewController {
         uvIndexLabel.isHidden = false
         rainyPercentLabel.isHidden = false
         nameLabel.text = LocationManager.shared.placeName
-        dateLabel.text = dateStr
+        dateLabel.text = Util.unixToString(date: TimeInterval(daily.dt))
         maxTemperatureLabel.text = "最高気温：" + String(round(daily.temp.max - 273.15)) + "℃"
         minTemperatureLabel.text = "最低気温：" + String(round(daily.temp.min - 273.15)) + "℃"
         humidityLabel.text = "湿度：" + String(daily.humidity) + "%"

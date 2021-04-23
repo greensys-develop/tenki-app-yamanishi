@@ -74,15 +74,15 @@ class ViewController: UIViewController {
         nextView.isWeeklyWeather = true // 週間天気ビューを表示させるためのフラグ
         nextView.navigationItem.title = "現在地の週間天気"
         
-        DispatchQueue.main.async{
-            let params: [String: Any] = ["lat": coordinate.latitude, "lon": coordinate.longitude, "lang": "ja", "APPID": ApiClient.appId]
-            let weeklyWeather = WeeklyWeatherRequest(params: params)
-            weeklyWeather.request { (response) in
-                guard let daily = response.daily,
-                                    !daily.isEmpty else {
-                                    HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
-                                    return
-                                }
+        let params: [String: Any] = ["lat": coordinate.latitude, "lon": coordinate.longitude, "lang": "ja", "APPID": ApiClient.appId]
+        let weeklyWeather = WeeklyWeatherRequest(params: params)
+        weeklyWeather.request { (response) in
+            guard let daily = response.daily,
+                                !daily.isEmpty else {
+                                HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
+                                return
+                            }
+            DispatchQueue.main.async{
                 nextView.dailyList = daily
                 self.navigationController?.pushViewController(nextView, animated: true)
             }
