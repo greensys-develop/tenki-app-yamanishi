@@ -82,9 +82,9 @@ class ViewController: UIViewController {
                                 HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
                                 return
                             }
-            DispatchQueue.main.async{
+            DispatchQueue.main.async{ [weak self] in
                 nextView.dailyList = daily
-                self.navigationController?.pushViewController(nextView, animated: true)
+                self?.navigationController?.pushViewController(nextView, animated: true)
             }
         }
     }

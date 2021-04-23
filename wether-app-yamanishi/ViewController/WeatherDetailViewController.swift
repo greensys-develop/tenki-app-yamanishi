@@ -48,8 +48,8 @@ class WeatherDetailViewController: UIViewController {
             //都道府県情報を表示
             let params: [String: Any] = ["q": item.queryName, "lang": "ja", "APPID": ApiClient.appId]
             let prefectureWeather = PrefectureWeatherRequest(params: params)
-            prefectureWeather.request { (response) in
-                self.weatherModelSetupView(response: response)
+            prefectureWeather.request { [weak self] (response) in
+                self?.weatherModelSetupView(response: response)
             }
         } else if let daily = dailySelectedItem {
             // 現在地の週間天気を表示
@@ -58,8 +58,8 @@ class WeatherDetailViewController: UIViewController {
             //現在地情報を表示
             let params: [String: Any] = ["lat": coordinate.lat, "lon": coordinate.lon, "lang": "ja", "APPID": ApiClient.appId]
             let currentLocationWeather = CurrentLocationWeatherRequest(params: params)
-            currentLocationWeather.request { (response) in
-                self.weatherModelSetupView(response: response)
+            currentLocationWeather.request { [weak self] (response) in
+                self?.weatherModelSetupView(response: response)
             }
         }
     }
