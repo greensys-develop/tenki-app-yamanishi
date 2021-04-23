@@ -7,7 +7,7 @@ target 'wether-app-yamanishi' do
 
   # Pods for wether-app-yamanishi
   pod "Alamofire" 
-  pod "SwiftyJSON"
+  pod "PKHUD"
 
   target 'wether-app-yamanishiTests' do
     inherit! :search_paths

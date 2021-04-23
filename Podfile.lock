@@ -1,20 +1,20 @@
 PODS:
   - Alamofire (5.4.2)
-  - SwiftyJSON (5.0.1)
+  - PKHUD (5.3.0)
 
 DEPENDENCIES:
   - Alamofire
-  - SwiftyJSON
+  - PKHUD
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - SwiftyJSON
+    - PKHUD
 
 SPEC CHECKSUMS:
   Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
-  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
 
-PODFILE CHECKSUM: c0ca3d89916ad3104181c963bacdf8360c924968
+PODFILE CHECKSUM: ffc0fc7d415de4048a348381647e323be5a7491c
 
 COCOAPODS: 1.10.1

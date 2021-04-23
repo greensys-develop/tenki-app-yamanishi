@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import PKHUD
 
 class WeatherDetailViewController: UIViewController {
     
-    var selectedItem: (name: String, queryName: String)!
-    var image: UIImage!
+    // 都道府県
+    var selectedItem: (name: String, queryName: String)?
+    
+    // 週間天気
+    var dailySelectedItem: Daily?
+    
     let f = DateFormatter()
     var coordinate: Coordinate = (lat: 0.0, lon: 0.0)
     
@@ -21,50 +26,109 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var cloudsLabel: UILabel!
+    @IBOutlet weak var uvIndexLabel: UILabel!
+    @IBOutlet weak var rainyPercentLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupView()
+        setupDate()
+        setupDatailView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    // 条件分岐でそれぞれの画面を表示
+    func setupDatailView() {
         if let item = selectedItem {
-            ApiClient.getPrefectureWeather(byCity: item.queryName) { response, errorString in
-                self.setupView(response: response)
+            //都道府県情報を表示
+            let params: [String: Any] = ["q": item.queryName, "lang": "ja", "APPID": ApiClient.appId]
+            let prefectureWeather = PrefectureWeatherRequest(params: params)
+            prefectureWeather.request { [weak self] (response) in
+                self?.weatherModelSetupView(response: response)
             }
+        } else if let daily = dailySelectedItem {
+            // 現在地の週間天気を表示
+            onecallSetupView(daily: daily)
         } else {
-            ApiClient.getCurrentLocationWeather(byLocation: coordinate) { (response, errorString) in
-                self.setupView(response: response)
+            //現在地情報を表示
+            let params: [String: Any] = ["lat": coordinate.lat, "lon": coordinate.lon, "lang": "ja", "APPID": ApiClient.appId]
+            let currentLocationWeather = CurrentLocationWeatherRequest(params: params)
+            currentLocationWeather.request { [weak self] (response) in
+                self?.weatherModelSetupView(response: response)
             }
-//            ApiClient.getFiveDaysAgoWeather(byLocation: coordinate) { (response, errString) in
-//                print(response!)
-//            }
         }
     }
     
-    @IBAction func tapOnCancelButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    // 日付取得 
-    private func getDate() -> Date {
+    // Dateセットアップ
+    func setupDate() {
         f.timeStyle = .none
         f.dateStyle = .short
         f.locale = Locale(identifier: "ja_JP")
-        let now = Date()
-        return now
     }
     
-    private func setupView(response: WeatherModel?) {
-            self.nameLabel.text = response?.name
-            self.dateLabel.text = self.f.string(from: self.getDate())
-            self.maxTemperatureLabel.text = "最高気温：" + String(round((response?.main.temp_max)! - 273.15)) + "℃"
-            self.minTemperatureLabel.text = "最低気温：" + String(round((response?.main.temp_min)! - 273.15)) + "℃"
-            self.humidityLabel.text = "湿度：" + String((response?.main.humidity)!) + "%"
-            self.weatherLabel.text = "天気：" + (response?.weather.first!.description)!
-
-            self.weatherImage.setImageByDefault(with: (response?.weather.first!.icon)!)
+    // Viewの初期化
+    func setupView() {
+        nameLabel.text = ""
+        dateLabel.text = ""
+        maxTemperatureLabel.text = ""
+        minTemperatureLabel.text = ""
+        humidityLabel.text = ""
+        weatherLabel.text = ""
+        cloudsLabel.text = ""
+        uvIndexLabel.text = ""
+        rainyPercentLabel.text = ""
+        
+        cloudsLabel.isHidden = true
+        uvIndexLabel.isHidden = true
+        rainyPercentLabel.isHidden = true
+    }
+    
+    @IBAction func tapOnCancelButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    private func weatherModelSetupView(response: WeatherModel?) {
+        guard let weather = response else {
+            HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        nameLabel.text = weather.name
+        dateLabel.text = f.string(from: Date())
+        maxTemperatureLabel.text = "最高気温：" + String(round(weather.main.tempMax - 273.15)) + "℃"
+        minTemperatureLabel.text = "最低気温：" + String(round(weather.main.tempMin - 273.15)) + "℃"
+        humidityLabel.text = "湿度：" + String(weather.main.humidity) + "%"
+        
+        if let weatherValue = weather.weather.first {
+            weatherLabel.text = "天気：" + (weatherValue.description)
+            weatherImage.setImageByDefault(with: weatherValue.icon)
+        }
+    }
+    
+    private func onecallSetupView(daily: Daily) {
+        cloudsLabel.isHidden = false
+        uvIndexLabel.isHidden = false
+        rainyPercentLabel.isHidden = false
+        nameLabel.text = LocationManager.shared.placeName
+        dateLabel.text = Util.unixToString(date: TimeInterval(daily.dt))
+        maxTemperatureLabel.text = "最高気温：" + String(round(daily.temp.max - 273.15)) + "℃"
+        minTemperatureLabel.text = "最低気温：" + String(round(daily.temp.min - 273.15)) + "℃"
+        humidityLabel.text = "湿度：" + String(daily.humidity) + "%"
+        cloudsLabel.text = "曇り：" + String(daily.clouds) + "%"
+        uvIndexLabel.text = "UVインデックス値：" + String(Int(round((daily.uvi))))
+        rainyPercentLabel.text = "降水確率：" + String(Int(round((daily.pop * 100)))) + "%"
+        
+        if let weatherValue = daily.weather?.first {
+            weatherLabel.text = "天気：" + weatherValue.description
+            weatherImage.setImageByDefault(with: weatherValue.icon)
+        }
     }
     
 }
