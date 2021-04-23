@@ -76,13 +76,13 @@ class ViewController: UIViewController {
         
         let params: [String: Any] = ["lat": coordinate.latitude, "lon": coordinate.longitude, "lang": "ja", "APPID": ApiClient.appId]
         let weeklyWeather = WeeklyWeatherRequest(params: params)
-        weeklyWeather.request { (response) in
+        weeklyWeather.request { [weak self] (response) in
             guard let daily = response.daily,
                                 !daily.isEmpty else {
                                 HUD.flash(.labeledError(title: "通信が正常動作できませんでした。", subtitle: nil))
                                 return
                             }
-            DispatchQueue.main.async{ [weak self] in
+            DispatchQueue.main.async{
                 nextView.dailyList = daily
                 self?.navigationController?.pushViewController(nextView, animated: true)
             }
